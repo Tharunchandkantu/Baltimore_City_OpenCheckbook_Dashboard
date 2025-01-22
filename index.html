@@ -54,7 +54,7 @@
 
         .nav-logo {
             height: 60px;
-            width: 400px; /* Increased width by 2 times */
+            width: 400px;
         }
 
         .nav-logo img {
@@ -215,8 +215,9 @@
         }
 
         .dashboard-container {
-            margin-top: 40px;
+            margin: 40px auto;
             width: 100%;
+            max-width: 1000px;
             display: none;
             justify-content: center;
             align-items: center;
@@ -229,12 +230,13 @@
 
         .dashboard {
             display: none;
-            width: 1000px;
-            height: 670px;
+            width: 100%;
+            height: 850px; /* Increased height */
             border: none;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
         }
 
         .dashboard.active {
@@ -432,14 +434,15 @@
         function loadDashboard(containerId, url) {
             const container = document.getElementById(containerId);
             if (!container.hasAttribute("data-loaded")) {
-                const viz = new tableau.Viz(container, url, {
+            const viz = new tableau.Viz(container, url, {
                     width: "1000px",
-                    height: "670px",
+                    height: "850px", /* Increased height */
                     hideTabs: true
                 });
                 container.setAttribute("data-loaded", true);
-            }
         }
+    }
+
 
         function switchDashboard(activeDashboardId) {
             document.querySelectorAll(".dashboard").forEach(dashboard => {
